@@ -21,15 +21,35 @@ parser = Parser(R_1) or Parser(R_2)
 parser3 = Parser(R_3)
 
 
-def find_x_parser(text):
-    for match in parser.findall(text):
+def find_x_parser(txt):
+    for match in parser.findall(txt):
         print([x.value for x in match.tokens])
 
-    for match in parser3.findall(text):
+    for match in parser3.findall(txt):
         print([x.value for x in match.tokens])
 
 
-text = 'Мотоцикл за первые два часа проехал 90 км, а следующие 3 часа двигался со скоростью 50 км/ч. Какой была ' \
-       'скорость мотоциклиста на первом участке пути? Какой путь он прошел за все время движения? '
+def find_actors(txt):
+    actor = []
+    act_id = 0
+    for match in parser_actor.findall(txt):
+        actor.extend([x.value for x in match.tokens])
+    for i in actor:
+        act_id += 1
+        if str(i) in same_str_dict and act_id > 1:
+            pass
+        else:
+            print("Actor", act_id, "is", str(i))
+    return act_id
 
-find_x_parser(text)
+
+def type_of_the_task(txt):
+    typeoft = ''
+    for match in parser_type_of_task.findall(txt):
+        for x in match.tokens:
+            typeoft = x.value
+    if typeoft == '':
+        typeoft = 'равномерное прямолинейное'
+        print('Type of the task is uniform rectilinear')
+    elif type_dictionary.get(typeoft):
+        print('Type of the task is', type_dictionary.get(typeoft))
