@@ -1,0 +1,27 @@
+Installation instructions:
+
+For main.py to work from command line: 
+
+1. For installation Razdel library write in the console (or Terminal) : 
+pip install razdel
+
+2. For installation SlovNet library write in the console (or Terminal) : 
+pip install slovnet
+
+3. For installation Yargy library write in the console (or terminal) : 
+pip install yargy
+
+4.Then for this library to work you need to download files from SlovNet library from here: 
+https://github.com/natasha/slovnet#downloads 
+(download all 3 files for main.py to work: slovnet_ner_news_v1.tar,  slovnet_syntax_news_v1.tar, slovnet_morph_news_v1.tar) 
+
+5. Add the downloaded files to the src folder
+
+6. In the terminal write following commands:
+cd ./(path to the folder)/Ontology-controlled-parser-of-texbooks/src
+python3 main.py
+
+7. Now, you will be asked to write a task from kinematics. An example that give clear results: 
+Мотоцикл за первые два часа проехал 90 км, а следующие 3 часа двигался со скоростью 50 км/ч. Какой была скорость мотоциклиста на первом участке пути?
+
+8. Done!
