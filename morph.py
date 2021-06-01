@@ -26,3 +26,7 @@ def morph_analysis(text):
         for token in markup_m.tokens:
             print(f'{token.text:>20} {token.tag}')
 
+            
+rawTxt = str(input())
+morph_analysis(rawTxt)
+
