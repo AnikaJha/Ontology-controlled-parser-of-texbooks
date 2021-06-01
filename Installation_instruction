@@ -22,6 +22,9 @@ cd ./(path to the folder)/Ontology-controlled-parser-of-texbooks/src
 python3 main.py
 
 7. Now, you will be asked to write a task from kinematics. An example that give clear results: 
-Мотоцикл за первые два часа проехал 90 км, а следующие 3 часа двигался со скоростью 50 км/ч. Какой была скорость мотоциклиста на первом участке пути?
+Мотоцикл за первые 2 часа проехал 90 км, а следующие 3 часа двигался со скоростью 50 км/ч. Какой была скорость мотоциклиста на первом участке пути?
 
 8. Done!
+
+If you want to try morp or syntax analysis, then replace files(slovnet_ner_news_v1.tar,  slovnet_syntax_news_v1.tar, slovnet_morph_news_v1.tar to the main folder)
+named "Ontology-controlled-parser-of-textbooks" and then try to run the file you want.
