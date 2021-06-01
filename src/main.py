@@ -1,23 +1,18 @@
 from razdel import sentenize, tokenize
 from navec import Navec
-from slovnet import Syntax, Morph
+from slovnet import Syntax
 from yargy_p import find_actors, find_x_parser, type_of_the_task
 
 dictionary_s = {'путь', 'километр', 'метр', 'сантиметр', 'длина', 'дорога', 'расстояние', 'км', 'см', 'дм', 'м'}
 dictionary_t = {'время', 'час', 'часа', 'часов', 'секунд', 'секунда', 'минута', 'ч', 'с', 'мин'}
 dictionary_v = {'скорость', 'м/с', 'км/ч', 'дм/мин', 'км/с', 'м/мин'}
-dictionary_actor = {'Дорога': ['машина', 'автобус', 'автомобиль', 'мотоцикл', 'поезд'],
-                    'Вода': ['поплавок', 'река', 'реку']}
+dictionary_a = {'ускорение', 'м/с2'}
+dictionary_scene = {'машина', 'автобус', 'автомобиль', 'мотоцикл', 'поезд', 'Дорога',
+                    'поплавок', 'река', 'реку', 'Вода'}
 me_v = 'скорость'
 me_s = 'путь'
 me_t = 'время'
-
-
-class Actor(object):
-    def __init__(self, actor):
-        self.actor = actor
-        if actor != '':
-            self.scene = dictionary_actor.get(actor)
+me_a = 'ускорение'
 
 
 class MotionEl(object):
@@ -26,7 +21,9 @@ class MotionEl(object):
         self.value = value
         self.short = short
         self.motion_el = None
-        if short in dictionary_v:
+        if short in dictionary_a:
+            self.motion_el = me_a
+        elif short in dictionary_v:
             self.motion_el = me_v
         elif short in dictionary_t:
             self.motion_el = me_t
@@ -78,17 +75,17 @@ def main_extractor(raw_text):
             elif int(token.id) == id3 and id3 != -1:
                 shrt += str(token.text)
                 me = MotionEl(num, shrt)
-                id3 = -1
                 id2 = -1
+                id3 = -1
                 print(me.motion_el, me.value, me.short)
 
-            elif id2 != -1:
+            elif id2 != -1 or id3 != -1:
                 me = MotionEl(num, shrt)
                 id2 = -1
                 print(me.motion_el, me.value, me.short)
 
-    print()
-    print("The main question(s) of the text is(are)")
+
+    print("\nThe main question(s) of the text is(are)")
     find_x_parser(raw_text)
 
 
