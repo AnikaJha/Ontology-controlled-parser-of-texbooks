@@ -33,4 +33,8 @@ def synt_analysis(text):
                 deps.append([source, target, token.rel])
 
         show_markup(words, deps)
+        
+        
+rawTxt = str(input())
+synt_analysis(rawTxt)
 
